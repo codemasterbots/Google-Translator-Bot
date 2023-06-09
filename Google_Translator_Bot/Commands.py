@@ -17,24 +17,10 @@ async def start_main(main, update):
     if not await db.is_user_exist(update.from_user.id):
         await db.add_user(update.from_user.id)  
     await update.reply_text(
-        text = Translation.START_MSG.format(update.from_user.first_name),
-        parse_mode = "markdown",
-        reply_markup = InlineKeyboardMarkup([
-                [
-                    InlineKeyboardButton
-                        (
-                            text = "✅️ Deploy Now ✅️", url = "https://github.com/PR0FESS0R-99/Google-Translator-Bot"
-                         )
-                ],
-                [
-                    InlineKeyboardButton
-                        (
-                            text = "🤠 Credits 🤠", callback_data="credits"
-                        )
-                ]
-            ]
-        )
+        text=Translation.START_MSG.format(update.from_user.first_name),
+        parse_mode="markdown"
     )
+
 
 @google_transletor_bot.on_message(filters.command("tr"))
 async def echo(client, message): 
